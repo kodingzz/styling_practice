@@ -1,40 +1,8 @@
 import { useState } from 'react'
 
-import {styled} from 'styled-components';
 import Button from './Button';
 import CustomInput from './Input';
 
-const ControlContainer=styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-  width: 100%;
-  padding:1rem 1.5rem;
-`
-
-
-const ActionContainer =styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 10px;
-  padding:1rem 1.5rem;
-
-
-`
-
-const TextButton= styled.button`
-
-  background-color: transparent;
-  border: none;
-  color: #f0b322;
-
-  &:hover{
-    color: #f0920e;
-  }
-`
 
 export default function Inputs(){
     const [email,setEmail] = useState('');
@@ -47,44 +15,17 @@ export default function Inputs(){
     
     return (
         <main>
-            <form id='inputs' onSubmit={(event)=>{
-                event.preventDefault();
-                setIsSubmitted(true);
-            }}>
-                <ControlContainer>
-              
-                        {/*  일부클래스는 정적으로 추가하고 일부 클래스는 조건에따라 동적으로 추가하는 방법 */}
-                        {/* <p>
-                          <Label $invalid={emailNotValid}>EMAIL</Label>
-                          className={ `label ${emailNotValid? 'invalid' :''}`}
-                          <Input
-                          $invalid={emailNotValid} 
-                          type='email'  
-                          value={email} 
-                          onChange={(e)=>setEmail(e.target.value)}/>    
-                          className={ emailNotValid? 'invalid' :''}
-                        </p> */}
-                      
-                  
+            <div id="inputs" className=' max-w-md mx-auto my-10 shadow-md bg-gradient-to-b from-stone-700 to-stone-800  w-full px-4 py-8 rounded-xl'>
+                <div className='flex flex-col gap-2 mb-6 w-full'>
+               
                     <CustomInput 
                         label='EMAIL' 
                         invalid={emailNotValid} 
                          type='email'  
                          value={email} 
                          onChange={(e)=>setEmail(e.target.value)}/>
-        
-                    
-
-                      {/* <p>
-                          <Label $invalid={passwordNotValid}>PASSWORD</Label>
-                        className={ passwordNotValid? 'invalid' :''}
-                        <Input 
-                        $invalid={passwordNotValid}
-                        type='password' 
-                        value={password} onChange={(e)=>setPasswrod(e.target.value)}/>    
-                         className={ passwordNotValid? 'invalid' :''}
-                      </p> */}
-                       
+                   
+                
                        <CustomInput 
                         label='PASSWORD' 
                         invalid={passwordNotValid} 
@@ -92,16 +33,15 @@ export default function Inputs(){
                          value={password} 
                          onChange={(e)=>setPasswrod(e.target.value)}/>
         
-                </ControlContainer>
+                </div>
               
 
-                <ActionContainer>
-                    <TextButton >Create a new account</TextButton>
-                    {/* className='text-button' */}
-                    <Button>SIGN IN</Button>
-                    {/* className='button' */}
-                </ActionContainer>
-            </form>
+                <div className='w-full flex justify-end items-center gap-3'>
+                    <button className=' text-amber-400 hover:text-amber-500' >Create a new account</button>
+                    <Button onClick={(e)=>{  
+                      setIsSubmitted(true)}}>SIGN IN</Button>
+                </div>
+            </div>
         </main>
     )
 }

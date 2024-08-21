@@ -1,16 +1,6 @@
 
-import {styled} from 'styled-components';
-
-const Button =styled.button`
-
-    background-color: #f0b322;
-    padding: 0.8rem 1.5rem;
-    border-radius: 6px;
-    border: none;
-
-    &:hover{
-     background-color: #f0920e;
-    }
-`
-
-export default Button;
+export default function Button({children,onClick}){
+    return (
+        <button className='px-4 py-2 font-semibold uppercase rounded text-stone-900 bg-amber-400 hover:bg-amber-500' onClick={onClick}>{children}</button>
+    )
+}
